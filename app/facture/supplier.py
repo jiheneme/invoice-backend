@@ -11,7 +11,7 @@ def extract_supplier(text: str, doc: Doc) -> str | None:
     2) Fallback: merge consecutive SpaCy ORG entities and pick the longest.
     """
 
-    # 1️⃣ Scan line by line for an ALL-CAPS header with 2+ words
+    # Scan line by line for an ALL-CAPS header with 2+ words
     for line in text.splitlines():
         stripped = line.strip()
         # Only letters, numbers, spaces, &, -; at least one space → 2+ words
@@ -22,7 +22,7 @@ def extract_supplier(text: str, doc: Doc) -> str | None:
             # Title-case it for readability
             return stripped.title()
 
-    # 2️⃣ Fallback: merge consecutive ORG ents from SpaCy
+    # Fallback: merge consecutive ORG ents from SpaCy
     org_ents = [ent for ent in doc.ents if ent.label_ == "ORG"]
     if org_ents:
         # Sort entities by start index
