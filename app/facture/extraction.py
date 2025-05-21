@@ -8,16 +8,15 @@ from app.facture.total import extract_total_and_currency
 from app.facture.products import extract_products
 
 def extract_entities(text: str) -> dict:
-    text = text.replace("€", "EUR")
-    text = re.sub(r"\s+", " ", text)
 
-    print("✅ NLP model loaded:", nlp)
+    #print("The text without any treatements", text)
+    text = text.replace("€", "EUR")
 
     doc = nlp(text)
 
     invoice_number = extract_invoice_number(doc)
     supplier = extract_supplier(doc)
-    person = extract_person(doc)
+    person = extract_person(text,doc)
     date = extract_date(doc, text)
     total, currency = extract_total_and_currency(doc, text)
     products = extract_products(text, currency)
