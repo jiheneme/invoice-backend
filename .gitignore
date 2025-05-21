@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches
+.cache/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Poetry virtual envs (juste au cas où)
+.venv/
+venv*/
+env*/
+
+# dotenv files
+.env
+.env.*
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
