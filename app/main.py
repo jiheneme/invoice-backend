@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.facture.extraction import extract_entities
+from app.invoice.extraction import extract_entities
 from app.settings import get_settings
 import fitz  # pymupdf
 
@@ -48,7 +48,7 @@ async def upload_pdf(file: UploadFile = File(...)):
             full_text += page.get_text()
         doc.close()
 
-        # 🧠 NLP extraction
+        #  NLP extraction
         structured_json = extract_entities(full_text)
         return structured_json
     
