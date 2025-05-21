@@ -1,4 +1,4 @@
-# app/facture/supplier.py
+
 
 import re
 from spacy.tokens import Doc

@@ -1,6 +1,6 @@
 import re
 from spacy.matcher import Matcher
-from app.facture.nlp_loader import nlp
+from app.invoice.nlp_loader import nlp
 
 def extract_invoice_number(doc) -> str | None:
 
@@ -49,7 +49,6 @@ def extract_invoice_number(doc) -> str | None:
             {"IS_SPACE": True, "OP": "*"},
             {"TEXT": {"REGEX": r"[\w\d]+(?:[-–][\w\d]+)+"}}
         ],
-
         # ➤ Generic dash-separated codes anywhere
         [{"TEXT": {"REGEX": r"[\w\d]+(?:-[\w\d]+)+"}}]
     ]
