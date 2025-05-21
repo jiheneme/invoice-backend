@@ -36,4 +36,5 @@ from app.facture.nlp_loader import nlp
 ])
 def test_extract_invoice_number(text, expected):
     doc = nlp(text)
-    assert extract_invoice_number(doc)
+    result = extract_invoice_number(doc)
+    assert result == expected
