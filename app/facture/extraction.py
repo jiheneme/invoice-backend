@@ -15,8 +15,8 @@ def extract_entities(text: str) -> dict:
     doc = nlp(text)
 
     invoice_number = extract_invoice_number(doc)
-    supplier = extract_supplier(doc)
-    person = extract_person(text,doc)
+    supplier = extract_supplier(text, doc)
+    person = extract_person(text, doc)
     date = extract_date(doc, text)
     total, currency = extract_total_and_currency(doc, text)
     products = extract_products(text, currency)

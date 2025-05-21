@@ -10,8 +10,6 @@ TITLES = [
     r"Mlle", r"Mademoiselle",
     r"Ms", r"Miss"
 ]
-
-# Regex pour capturer "Mr Prenom Nom" sur une seule ligne
 PERSON_PATTERN = re.compile(
     rf"\b(?:{'|'.join(TITLES)})\s+"         # Title followed at least by one space
     r"([A-ZÉÈÀÔÙÏÇ][\w’\-]+(?:\s+[A-ZÉÈÀÔÙÏÇ][\w’\-]+)*)"
