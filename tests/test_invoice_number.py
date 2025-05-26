@@ -4,8 +4,8 @@ import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 import pytest
-from app.facture.invoice_number import extract_invoice_number
-from app.facture.nlp_loader import nlp
+from app.invoice.invoice_number import extract_invoice_number
+from app.invoice.nlp_loader import nlp
 
 @pytest.mark.parametrize("text,expected", [
     # ➤ Simple cases
@@ -34,6 +34,7 @@ from app.facture.nlp_loader import nlp
     ("Ceci est un texte sans numéro", None),
     ("La facture a été envoyée", None),
 ])
+
 def test_extract_invoice_number(text, expected):
     doc = nlp(text)
     result = extract_invoice_number(doc)

@@ -1,6 +1,4 @@
 #!/bin/bash
-
-# Par défaut dev si ENV non défini
 ENV=${ENV:-dev}
 
 echo "Activation de l'environnement virtuel Poetry..."
@@ -12,3 +10,5 @@ echo "Lancement de l'application avec ENV=$ENV"
 export ENV=$ENV
 
 uvicorn app.main:app --reload
+
+PYTHONPATH=$(pwd)
