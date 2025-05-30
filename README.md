@@ -36,6 +36,7 @@ Remote inference via an MCP Server
 ### Installation
 
 git clone https://github.com/jiheneme/invoice-backend.git
+
 cd invoice-backend
 poetry install
 
