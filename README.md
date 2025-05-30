@@ -45,19 +45,19 @@ poetry install
 source ./start.sh
 
 # 🛠 Configuration
-All runtime configuration is handled via the settings.py module. It loads environment-specific variables:
+All runtime configuration is handled via the -settings.py- module. It loads environment-specific variables:
 
-App name
+- App name
 
-Debug mode
+- Debug mode
 
-Environment (dev, rec, prod)
+- Environment (dev, rec, prod)
 
-CORS origins
+- CORS origins
 
-(Optional) External service URLs
+- (Optional) External service URLs
 
-Set your environment using .env.dev, .env.prod, etc.
+- Set your environment using .env.dev, .env.prod, etc.
 
 ### API
 POST /upload-pdf/ – Upload a PDF invoice and get structured JSON response.
