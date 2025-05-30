@@ -2,9 +2,12 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.invoice.agent_client import query_invoice_agent #to use the AI agent
+from app.invoice.mcp_server_client import query_invoice_mcp_server # to use MCP server
 
 from app.invoice.extraction import extract_entities # To use the local NLP extraction
 from app.settings import get_settings
+
+import re
 import fitz  # pymupdf
 
 settings = get_settings()
@@ -50,14 +53,21 @@ async def upload_pdf(file: UploadFile = File(...)):
             full_text += page.get_text()
         doc.close()
 
-        #  NLP extraction
+       
+       # print(full_text)
+        
+       # -1 NLP extraction
        # structured_json = extract_entities(full_text)
 
-        print(full_text)
-        
-        # Call the MCP model agent
-        structured_json = await query_invoice_agent(full_text)
+       # 2- Call the AI Agent
+       # structured_json = await query_invoice_agent(full_text)
+       # return structured_json 
+    
+       # 3- Call the MCP server
+        structured_json = await query_invoice_mcp_server(full_text)
         return structured_json
+    
+
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"PDF processing error: {str(e)}")

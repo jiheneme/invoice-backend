@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     debug: bool
     database_url: str
     invoice_agent_url: str
+    invoice_mcp_server_url: str
+    
     env: str = "dev"
 
     model_config = SettingsConfigDict(
