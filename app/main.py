@@ -1,7 +1,9 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.invoice.extraction import extract_entities
+from app.invoice.agent_client import query_invoice_agent #to use the AI agent
+
+from app.invoice.extraction import extract_entities # To use the local NLP extraction
 from app.settings import get_settings
 import fitz  # pymupdf
 
@@ -37,19 +39,24 @@ def read_root():
 @app.post("/upload-pdf/")
 async def upload_pdf(file: UploadFile = File(...)):
     if file.content_type != "application/pdf":
-        raise HTTPException(status_code=400, detail="The file must be a PDF.")
+        raise HTTPException(status_code = 400, detail = "The file must be a PDF.")
     
     pdf_bytes = await file.read()
     
     try:
-        doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+        doc = fitz.open(stream = pdf_bytes, filetype = "pdf")
         full_text = ""
         for page in doc:
             full_text += page.get_text()
         doc.close()
 
         #  NLP extraction
-        structured_json = extract_entities(full_text)
+       # structured_json = extract_entities(full_text)
+
+        print(full_text)
+        
+        # Call the MCP model agent
+        structured_json = await query_invoice_agent(full_text)
         return structured_json
     
     except Exception as e:

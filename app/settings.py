@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     app_name: str
     debug: bool
     database_url: str
+    invoice_agent_url: str
     env: str = "dev"
 
     model_config = SettingsConfigDict(
