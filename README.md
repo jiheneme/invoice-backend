@@ -59,7 +59,7 @@ All runtime configuration is handled via the -settings.py- module. It loads envi
 
 - Set your environment using .env.dev, .env.prod, etc.
 
-### API
+## API
 POST /upload-pdf/ – Upload a PDF invoice and get structured JSON response.
 
 🧠 Entity Extraction Modes
@@ -72,7 +72,7 @@ Inside upload_pdf() in main.py, choose one of the following methods:
 5. 🌐 MCP Server : Uses the Model Context Protocol to invoke a compliant inference server.
    structured_json = await query_invoice_mcp_server(full_text)
    
-## To switch between modes, comment/uncomment the corresponding lines in main.py.
+#### To switch between modes, comment/uncomment the corresponding lines in main.py.
 
 # 📄 License
 
