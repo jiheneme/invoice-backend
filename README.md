@@ -66,10 +66,13 @@ POST /upload-pdf/ – Upload a PDF invoice and get structured JSON response.
 Inside upload_pdf() in main.py, choose one of the following methods:
 
 1. 🔍 Local spaCy NLP :
+   
    structured_json = extract_entities(full_text)
 3. 🤖 AI Agent : Calls a remote Hugging Face model exposed via an AI agent microservice.
+
    structured_json = await query_invoice_agent(full_text)
 5. 🌐 MCP Server : Uses the Model Context Protocol to invoke a compliant inference server.
+   
    structured_json = await query_invoice_mcp_server(full_text)
    
 #### To switch between modes, comment/uncomment the corresponding lines in main.py.
